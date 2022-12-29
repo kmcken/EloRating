@@ -1,0 +1,115 @@
+$PRACTISCORE 1.682 RESULTS
+$INFO Region:USPSA
+$INFO PLATFORM IOS
+$INFO PractiScore_Product: PractiScore (iOS)
+$INFO PractiScore_Version:1.682
+$INFO Match name:Hosers Steel Tactical Rifle 28 Aug 1200 VTAC
+$INFO Match date:08/28/2022
+$INFO Club Name:Hoser
+$INFO Club Code:HOSERS STEEL
+$INFO Multigun:0
+$INFO Scoring:0
+$INFO Classifiers:0
+$INFO Match Level: Level I
+Z 3.0
+A Hosers Steel Tactical Rifle 28 Aug 1200 VTAC,Hoser,08/28/2022
+D Comp,USPSA,FirstName,LastName,DQPistol,DQRifle,DQShotgun,Reentry,Class,Division,Match Points,Place Overall,Power Factor,Shotgun Division,Shotgun Power Factor,Shotgun Place Overall,Shotgun Entered,Shotgun Match Points,Rifle Division,Rifle Power Factor,Rifle Place Overall,Rifle Entered,Rifle Match Points,Aggregate,Aggregate Division,Aggregate Pistol Percent,Aggregate Pistol Points,Aggregate Place,Aggregate Rifle Percent,Aggregate Rifle Points,Aggregate Shotgun Percent,Aggregate Shotgun Points,Aggregate Total,Female,Age,Law,Military
+E 1,,Andrew,Sea,No,No,No,No,,Limited,300.0000,1,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,No,Yes
+E 2,,George,Delena,No,No,No,No,,Open,450.0000,1,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,No,No
+E 3,,Ryan,Evans,No,No,No,No,,Open,269.1042,2,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,No,Yes
+E 4,,Joseph,Murtaugh,No,No,No,No,,Open,250.2840,3,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,No,No
+E 5,,Mike,Stefanski,No,No,No,No,,Open,55.9762,4,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,No,No
+E 6,,Brandon,Desy,No,No,No,No,,Open,0.0000,5,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,No,No
+E 7,,Kenny,Weiman,No,No,No,No,U,Tactical,449.0775,1,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,No,No
+E 8,,curtis,brotherston,No,No,No,No,,Tactical,428.4992,2,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,No,Yes
+E 9,,David,Haworth,No,No,No,No,,Tactical,337.0823,3,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,Senior,No,No
+E 10,,Charlene,Jones,No,No,No,No,U,Tactical,306.0129,4,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,Yes,,No,No
+E 11,,Matt,Troiano,No,No,No,No,,Tactical,296.3318,5,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,No,No
+E 12,,Hollis,Bankston,No,No,No,No,,Tactical,216.5406,6,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,No,No
+E 13,,Robert,Williams,No,No,No,No,,Tactical,164.5790,7,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,No,No
+E 14,,Tim,Gordon,No,No,No,No,,Tactical,151.4779,8,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,Senior,No,No
+E 15,,Allen,Carns,No,No,No,No,,Tactical,150.3923,9,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,Yes,No
+E 16,,Peterson,Mark,No,No,No,No,,Tactical,141.5303,10,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,Senior,No,No
+E 17,,Joseph,Conlin,No,No,No,No,,Tactical,123.8544,11,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,No,No
+E 18,,Patrick,Smith,No,No,No,No,,Tactical,121.8025,12,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,No,No
+E 19,,Adair,Pullaro,No,No,No,No,,Tactical,92.5779,13,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,No,No
+E 20,,Nicholas,Hummel,No,No,No,No,,Tactical,65.9516,14,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,No,No
+E 21,,Zach,Freis,No,No,No,No,Novice,Tactical,57.3362,15,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,No,No
+E 22,,Steve,Musso,No,No,No,No,,Tactical,54.5887,16,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,No,No
+E 23,,Jeffrey,Eidsness,No,No,No,No,,Tactical,48.9255,17,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,,Yes,Yes
+E 24,,Rob,Dixon,No,No,No,No,,Tactical,4.8675,18,Major,Open,Major,,No,,Open,Minor,,No,,No,,,,,,,,,,No,Senior,No,No
+F Number,Guntype,Minimum Rounds,Maximum Points,Classifier,Classifier_No,Stage_name,ScoringType,TimesRun
+G 1,Pistol,30,150,No,,Silhouette Range,Comstock,1
+G 2,Pistol,30,150,No,,300 Yd Range,Comstock,1
+G 3,Pistol,30,150,No,,VTAC Wall,Comstock,3
+H Gun,Stage,Comp,DQ,DNF,A,B,C,D,Miss,No Shoot,Procedural,Double Poppers,Double Popper Miss,Late Shot,Extra Shot,Extra Hit,No Penalty Miss,Additional Penalty,Total Penalty,T1,T2,T3,T4,T5,Time,Raw Points,Total Points,Hit Factor,Stage Points,Stage Place,Stage Power Factor
+I Pistol,1,1,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,261.54,0,0,0,0,261.54,150,150,0.5735,150.0000,1,
+I Pistol,1,2,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,96.08,0,0,0,0,96.08,150,150,1.5612,150.0000,1,
+I Pistol,1,3,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,214.39,0,0,0,0,214.39,150,150,0.6997,67.2271,3,
+I Pistol,1,4,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,156.3,0,0,0,0,156.30,150,150,0.9597,92.2079,2,
+I Pistol,1,5,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,257.46,0,0,0,0,257.46,150,150,0.5826,55.9762,4,
+I Pistol,1,7,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,95.07,0,0,0,0,95.07,150,150,1.5778,150.0000,1,
+I Pistol,1,8,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,107.66,0,0,0,0,107.66,150,150,1.3933,132.4598,2,
+I Pistol,1,9,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,120.09,0,0,0,0,120.09,150,150,1.2491,118.7508,5,
+I Pistol,1,10,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,115.33,0,0,0,0,115.33,150,150,1.3006,123.6469,4,
+I Pistol,1,11,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,110.38,0,0,0,0,110.38,150,150,1.3589,129.1894,3,
+I Pistol,1,12,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,155.38,0,0,0,0,155.38,150,150,0.9654,91.7797,6,
+I Pistol,1,13,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,172.98,0,0,0,0,172.98,150,150,0.8672,82.4439,8,
+I Pistol,1,14,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,190.61,0,0,0,0,190.61,150,150,0.7869,74.8099,9,
+I Pistol,1,15,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,211.61,0,0,0,0,211.61,150,150,0.7089,67.3945,11,
+I Pistol,1,16,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,200.58,0,0,0,0,200.58,150,150,0.7478,71.0927,10,
+I Pistol,1,17,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,236.66,0,0,0,0,236.66,150,150,0.6338,60.2548,12,
+I Pistol,1,18,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,170.74,0,0,0,0,170.74,150,150,0.8785,83.5182,7,
+I Pistol,1,19,No,No,28,0,0,0,2,0,0,28,2,0,0,0,0,0,20,297.84,0,0,0,0,297.84,140,120,0.4029,38.3033,15,
+I Pistol,1,20,No,No,28,0,0,0,2,0,0,28,2,0,0,0,0,0,20,298.47,0,0,0,0,298.47,140,120,0.4021,38.2273,16,
+I Pistol,1,21,No,No,28,0,0,0,2,0,0,28,2,0,0,0,0,0,20,198.97,0,0,0,0,198.97,140,120,0.6031,57.3362,13,
+I Pistol,1,22,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,261.23,0,0,0,0,261.23,150,150,0.5742,54.5887,14,
+I Pistol,1,23,No,No,24,0,0,0,6,0,0,24,6,0,0,0,0,0,60,283.69,0,0,0,0,283.69,120,60,0.2115,20.1071,17,
+I Pistol,1,24,No,No,21,0,0,0,9,0,0,21,9,0,0,0,0,0,90,292.72,0,0,0,0,292.72,105,15,0.0512,4.8675,18,
+I Pistol,2,1,No,No,14,0,0,0,16,0,0,14,16,0,0,0,0,0,160,202,0,0,0,0,202.00,70,0,0.0000,0.0000,1,
+I Pistol,2,2,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,132.28,0,0,0,0,132.28,150,150,1.1340,150.0000,1,
+I Pistol,2,3,No,No,28,0,0,0,2,0,0,28,2,0,0,0,0,0,20,270.19,0,0,0,0,270.19,140,120,0.4441,58.7434,3,
+I Pistol,2,4,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,233.57,0,0,0,0,233.57,150,150,0.6422,84.9471,2,
+I Pistol,2,5,No,No,15,0,0,0,15,0,0,15,15,0,0,0,0,0,150,294.48,0,0,0,0,294.48,75,0,0.0000,0.0000,5,
+I Pistol,2,7,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,109.41,0,0,0,0,109.41,150,150,1.3710,150.0000,1,
+I Pistol,2,8,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,112.38,0,0,0,0,112.38,150,150,1.3348,146.0394,2,
+I Pistol,2,9,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,159.75,0,0,0,0,159.75,150,150,0.9390,102.7352,3,
+I Pistol,2,10,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,180.99,0,0,0,0,180.99,150,150,0.8288,90.6783,5,
+I Pistol,2,11,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,175.65,0,0,0,0,175.65,150,150,0.8540,93.4354,4,
+I Pistol,2,12,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,252.15,0,0,0,0,252.15,150,150,0.5949,65.0875,8,
+I Pistol,2,13,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,275.83,0,0,0,0,275.83,150,150,0.5438,59.4967,10,
+I Pistol,2,14,No,No,24,0,0,0,6,0,0,24,6,0,0,0,0,0,60,300.48,0,0,0,0,300.48,120,60,0.1997,21.8490,14,
+I Pistol,2,15,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,197.74,0,0,0,0,197.74,150,150,0.7586,82.9978,6,
+I Pistol,2,16,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,232.99,0,0,0,0,232.99,150,150,0.6438,70.4376,7,
+I Pistol,2,17,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,258.06,0,0,0,0,258.06,150,150,0.5813,63.5996,9,
+I Pistol,2,18,No,No,25,0,0,0,5,0,0,25,5,0,0,0,0,0,50,299.52,0,0,0,0,299.52,125,75,0.2504,27.3961,13,
+I Pistol,2,19,No,No,18,0,0,0,12,0,0,18,12,0,0,0,0,0,120,295.63,0,0,0,0,295.63,90,0,0.0000,0.0000,18,
+I Pistol,2,20,No,No,25,0,0,0,5,0,0,25,5,0,0,0,0,0,50,296,0,0,0,0,296.00,125,75,0.2534,27.7243,12,
+I Pistol,2,21,No,No,14,0,0,0,16,0,0,14,16,0,0,0,0,0,160,265.39,0,0,0,0,265.39,70,0,0.0000,0.0000,15,
+I Pistol,2,22,No,No,19,0,0,0,11,0,0,19,11,0,0,0,0,0,110,295.56,0,0,0,0,295.56,95,0,0.0000,0.0000,17,
+I Pistol,2,23,No,No,25,0,0,0,5,0,0,25,5,0,0,0,0,0,50,284.69,0,0,0,0,284.69,125,75,0.2634,28.8184,11,
+I Pistol,2,24,No,No,20,0,0,0,10,0,0,20,10,0,0,0,0,0,100,294.19,0,0,0,0,294.19,100,0,0.0000,0.0000,16,
+I Pistol,3,1,No,No,24,0,0,0,6,0,0,24,6,0,0,0,0,0,60,74.31,66.04,70.33,0,0,210.68,120,60,0.2848,150.0000,1,
+I Pistol,3,2,No,No,27,0,0,0,3,0,0,27,3,0,0,0,0,0,30,46.97,34.83,41.76,0,0,123.56,135,105,0.8498,150.0000,1,
+I Pistol,3,3,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,73.57,56.51,54.89,0,0,184.97,150,150,0.8109,143.1337,2,
+I Pistol,3,4,No,No,25,0,0,0,5,0,0,25,5,0,0,0,0,0,50,56.95,69.5,54.57,0,0,181.02,125,75,0.4143,73.1290,3,
+I Pistol,3,5,No,No,13,0,0,0,17,0,0,13,17,0,0,0,0,0,170,74,74.3,67,0,0,215.30,65,0,0.0000,0.0000,5,
+I Pistol,3,7,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,52.19,47.73,52.24,0,0,152.16,150,150,0.9858,149.0775,2,
+I Pistol,3,8,No,No,30,0,0,0,0,0,0,30,0,0,0,0,0,0,0,48.25,48.94,54.03,0,0,151.22,150,150,0.9919,150.0000,1,
+I Pistol,3,9,No,No,29,0,0,0,1,0,0,29,1,0,0,0,0,0,10,63.85,56.97,55.79,0,0,176.61,145,135,0.7644,115.5963,3,
+I Pistol,3,10,No,No,27,0,0,0,3,0,0,27,3,0,0,0,0,0,30,55.39,59.49,58.31,0,0,173.19,135,105,0.6063,91.6877,4,
+I Pistol,3,11,No,No,26,0,0,0,4,0,0,26,4,0,0,0,0,0,40,64.42,56.74,63.49,0,0,184.65,130,90,0.4874,73.7070,5,
+I Pistol,3,12,No,No,25,0,0,0,5,0,0,25,5,0,0,0,0,0,50,72.36,62.69,55.01,0,0,190.06,125,75,0.3946,59.6734,6,
+I Pistol,3,13,No,No,22,0,0,0,8,0,0,22,8,0,0,0,0,0,80,75.28,59.09,66.08,0,0,200.45,110,30,0.1497,22.6384,9,
+I Pistol,3,14,No,No,25,0,0,0,5,0,0,25,5,0,0,0,0,0,50,75.02,59.69,72.18,0,0,206.89,125,75,0.3625,54.8190,7,
+I Pistol,3,15,No,No,20,0,0,0,10,0,0,20,10,0,0,0,0,0,100,61.86,66.62,66.45,0,0,194.93,100,0,0.0000,0.0000,13,
+I Pistol,3,16,No,No,15,0,0,0,15,0,0,15,15,0,0,0,0,0,150,79.89,60.9,72,0,0,212.79,75,0,0.0000,0.0000,18,
+I Pistol,3,17,No,No,16,0,0,0,14,0,0,16,14,0,0,0,0,0,140,50.99,73.83,75.18,0,0,200.00,80,0,0.0000,0.0000,16,
+I Pistol,3,18,No,No,21,0,0,0,9,0,0,21,9,0,0,0,0,0,90,70.78,66.93,70.71,0,0,208.42,105,15,0.0720,10.8882,10,
+I Pistol,3,19,No,No,25,0,0,0,5,0,0,25,5,0,0,0,0,0,50,73.79,71.96,63.21,0,0,208.96,125,75,0.3589,54.2746,8,
+I Pistol,3,20,No,No,18,0,0,0,12,0,0,18,12,0,0,0,0,0,120,68.88,65.92,72.25,0,0,207.05,90,0,0.0000,0.0000,17,
+I Pistol,3,21,No,No,12,0,0,0,18,0,0,12,18,0,0,0,0,0,180,49.65,47.81,59.23,0,0,156.69,60,0,0.0000,0.0000,11,
+I Pistol,3,22,No,No,10,0,0,0,20,0,0,10,20,0,0,0,0,0,200,75.29,65.61,57.24,0,0,198.14,50,0,0.0000,0.0000,15,
+I Pistol,3,23,No,No,19,0,0,0,11,0,0,19,11,0,0,0,0,0,110,57.56,72.39,38.83,0,0,168.78,95,0,0.0000,0.0000,12,
+I Pistol,3,24,No,No,17,0,0,0,13,0,0,17,13,0,0,0,0,0,130,62.68,72.49,62.28,0,0,197.45,85,0,0.0000,0.0000,14,
+$END
