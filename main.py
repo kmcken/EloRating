@@ -4,7 +4,6 @@ from config import *
 
 
 path = root + "/Data/txtFiles/"
-print(path)
 fh.convert_to_json(path)
 
-
+# ps.download_match(199230)

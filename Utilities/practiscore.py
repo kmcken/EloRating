@@ -112,13 +112,11 @@ def download_all(start_id=156251, end_id=181678, level=2):
         download_match(match, level=level)
 
 
-def download_match(match_id, level=2):
+def download_match(match_id):
     """
     Downloads Match Results .txt file for given match id. Labeled match_id.txt
     :param match_id: Practiscore match ID
     :type match_id: int
-    :param level: If level == 2, then returns level 2+ matches, if level == 3, then level 3 matches only, else all
-    :type level: int
     """
     file = root + '/Data/txtFiles/' + str(match_id) + '.txt'
 
@@ -139,13 +137,6 @@ def download_match(match_id, level=2):
     with open(file, 'wb') as f:
         for chunk in page.iter_content(chunk_size=8192):
             f.write(chunk)
-    # if level is not None:
-    #     if islevel2(file, level=level) is False or isuspsa(file) is False:
-    #         os.remove(file)
-    #         print(match_id, 'is not a Level II+ match.')
-    #         return
-    #     else:
-    #         print(match_id, 'is a Level II+ match.')
 
 
 def webreport(page):

@@ -1,116 +1,144 @@
 import numpy as np
 
 
-def logistic_score(score_difference, k=10, x0=0):
+def expected_scores(ratings, scale=1000):
     """
-    Converts match placement to a logistic distribution score
-    :param score_difference: match score percentage
-    :type score_difference: float
-    :param k: logistic growth rate
-    :type k: float
-    :param x0: curve center
-    :type x0: float
-    :return: logistic score between 0 and 1
-    :rtype: float
-    """
-    return 1 / (1 + np.exp(-k * (score_difference / 100 - x0)))
+    Expected scores of all competitors
 
+    Parameters
+    ----------
+    ratings : array like
+        Competitors' pre-match ratings
+    scale : real number
+        Distribution scale factor
 
-def expected_score(Ra, Rb, scale=400):
-    """
-    Calculates the expected score of Competitor A against Competitor B
-    :param Ra: Rating of Competitor A
-    :type Ra: int
-    :param Rb: Rating of Competitor B
-    :type Rb: int
-    :param scale: equation constant
-    :type scale: float
-    :return: Expected Score for Competitor A
-    :rtype: float
-    """
-    return 1 / (1 + 10 ** ((Rb - Ra) / scale))
-
-
-def expected_ratio(Ra, Rb, scale=400):
-    """
-    Calculates the expected score ratio of Competitor A against Competitor B
-    :param Ra: Rating of Competitor A
-    :type Ra: int
-    :param Rb: Rating of Competitor B
-    :type Rb: int
-    :param scale: equation constant
-    :type scale: float
-    :return: Expected Score for Competitor A
-    :rtype: float
-    """
-    return 10 ** (Ra / scale) / 10 ** (Rb / scale)
-
-
-def k_factor(number_matches, floor=20):
-    """
-    K factor depends on number of matches completed.
-    :param number_matches: number of previous matches
-    :type number_matches: int
-    :param floor: maximum ratings change after 5 matches
-    :type floor: float
-    :return: K factor
-    :rtype: float
+    Returns
+    -------
+    expected : ndarray
+        Expect scores as a fraction of all scores
     """
 
-    k = 100 / (number_matches + 1)
-    if k <= floor:
-        return floor
-    return k
-
-
-def rating_adjustment(ratings, scores, k):
-    """
-    Calculates the ratings adjustment for all competitors
-    :param ratings: array of competitor ratings
-    :type ratings: np.array
-    :param scores: array of match scores (percentage)
-    :type scores: np.array
-    :param k: array of k-factor per competitor
-    :type k: np.array
-    :return: ratings adjustment
-    :rtype: np.array
-    """
+    def expected_score(Ra, Rb, D):
+        return 1 / (1 + 10 ** ((Rb - Ra) / D))
 
     N = len(ratings)
-    adj = np.zeros(N)
+    expected = np.zeros(N)
     for i in range(0, N):
-        S, E = 0, 0
         for j in range(0, N):
-            if i == j:
-                pass
-            else:
-                S += logistic_score(scores[i] - scores[j])
-                E += expected_score(ratings[i], ratings[j])
-        adj[i] = k[i] * (S - E)
+            if i != j:
+                expected[i] += expected_score(ratings[i], ratings[j], D=scale) / (N * (N - 1) / 2)
 
-    return adj
+    return expected
 
 
-def performance_rating(ratings, scores, scale=400):
-    """
-    Calculates the performance score for the match.
-
-    :param ratings: array of competitor ratings
-    :type ratings: np.array
-    :param scores: array of match scores (percentage)
-    :type scores: np.array
-    :param scale: equation constant
-    :type scale: float
-    :return: performance rating
-    :rtype: float
-    """
+def expected2(ratings, scale=1000):
+    def expected_score(Ra, Rb, D):
+        return 2 / (1 + 10 ** ((Rb - Ra) / D))
 
     N = len(ratings)
-    perf = np.zeros(N)
+    expected = np.zeros(N)
+    for i in range(N):
+        for j in range(N):
+            if i != j:
+                expected[i] += expected_score(ratings[i], ratings[j], D=scale) / (N * (N - 1))
+    return expected
+
+
+def scores_normalized(scores, method='floor'):
+    """
+    Normalizes all scores such that all scores sum to 1
+
+    Parameters
+    ----------
+    scores : array like
+        All competitors scores
+    method : str
+        floor - Scores are a ratio of the sum / total with the lowest score subtracted first
+        percent - Fraction of max score
+
+    Returns
+    -------
+    normal : ndarray
+        Normalized scores as a fraction of all scores
+    """
+
+    if method == 'floor':
+        N = len(scores)
+        normal = np.zeros(N)
+        scores = scores - np.min(scores)
+        for i in range(0, N):
+            normal[i] = scores[i] / np.sum(scores)
+        return normal
+    if method == 'percent':
+        return scores / np.max(scores)
+
+
+def rating_adjustment(ratings, scores, k=20, scale=1000, min_rating=100):
+    """
+    Expected scores of all competitors
+
+    Parameters
+    ----------
+    ratings : array like
+        Competitors' pre-match ratings
+    scores : array like
+        All competitors' scores
+    k : array like
+        All competitors' k-factor
+    scale : real number
+        Distribution scale factor
+    min_rating : int
+        Minimum rating a competitor can have
+
+    Returns
+    -------
+    ratings_new : ndarray
+        Adjusted ratings
+    """
+
+    if len(ratings) != len(scores):
+        raise ValueError("The length of 'ratings' and 'scores' are not the same.")
+    if isinstance(k, int) or isinstance(k, float):
+        k = np.ones(len(ratings)) * k
+
+    def adjust(Ra, Ea, Sa, K, N):
+        return Ra + K * (N - 1) * (Sa - Ea)
+
+    expected = expected2(ratings, scale=scale)
+    scores_norm = scores_normalized(scores, method='floor')
+
+    N = len(ratings)
+    ratings_new = np.zeros(N)
     for i in range(0, N):
-        S = 0
-        for j in range(0, N):
-            S += logistic_score(scores[i] - scores[j])
-        print(S)
-        perf[i] = (np.sum(ratings) + scale * S) / N
-    return perf
+        ratings_new[i] = adjust(ratings[i], expected[i], scores_norm[i], k[i], N)
+
+    for i in range(N):
+        if ratings_new[i] < 100:
+            ratings_new[i] = 100
+    return np.round(ratings_new, 0)
+
+
+# def performance_rating(ratings, scores, scale=400):
+#     """
+#     Calculates the performance score for the match.
+#
+#     :param ratings: array of competitor ratings
+#     :type ratings: np.array
+#     :param scores: array of match scores (percentage)
+#     :type scores: np.array
+#     :param scale: equation constant
+#     :type scale: float
+#     :return: performance rating
+#     :rtype: float
+#     """
+#
+#     N = len(ratings)
+#     perf = np.zeros(N)
+#     total_score = np.sum(scores)
+#     score = score_exponential(scores)
+#     for i in range(0, N):
+#         S = 0
+#         for j in range(0, N):
+#             S += (scores[i] - scores[j]) / total_score
+#         perf[i] = (np.sum(ratings) + scale * S) / N
+#     return perf
