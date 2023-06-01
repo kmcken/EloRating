@@ -1,68 +1,121 @@
-from Application import elo
 import matplotlib.pyplot as plt
-import pandas as pd
-import numpy as np
+import time
+from config import *
+from Application import database, rating, elommr as mmr
+from Utilities import practiscore as ps
+
+division = 'Carry Optics'
+match_num = 205465
+file = root + '/Data/jsonFiles/' + str(match_num) + '.json'
+
+# M = 0
+# scores = rating.match_update(file, division)
+#
+# for score in scores:
+#     print(score.first, score.last, 'Performance:', score.performance, 'New Rating:', score.rating)
 
 
-match = {'name': ['Riley', 'Dyami', 'Kirt', 'Sean', 'Dana'], 'score': [100., 93.19, 86.59, 79.37, 50.48], 'rating': [1000, 1000, 1000, 1000, 500]}
-df = pd.DataFrame(data=match)
+path = root + '/Data/jsonFiles/'
+dir_list = os.listdir(path)
+t = time.time()
 
-scores = df.score
-ratings = df.rating
-
-N_matches = 100
-x = np.linspace(0, N_matches, N_matches + 1)
-
-print('initial expected:', elo.expected_scores(ratings))
-print('initial expected new:', elo.expected2(ratings, scale=1000))
-print('initial scores:', elo.scores_normalized(scores, method='percent'))
-
-riley = [ratings[0]]
-dyami = [ratings[1]]
-kirt = [ratings[2]]
-sean = [ratings[3]]
-dana = [ratings[4]]
+for file in dir_list:
+    t2 = time.time()
+    print('Match:', file)
+    file = path + file
+    rating.match_update(file, division)
+    print('Elapsed Time (s): %s' % (np.round(time.time() - t, 3)))
+    print('Elapsed Time (s) for match: %s' % (np.round(time.time() - t2, 3)))
 
 
-def kfactor(number, maxval=500):
-    if number > 10:
-        return 10
-    return maxval / (number + 1)
+## Ranked list
+shooters = database.get_unique_competitors(division)
+competitors = list()
+for shooter in shooters:
+    try:
+        competitors.append(database.get_competitor_current(shooter[0], division)[0])
+    except:
+        pass
 
+competitors.sort(key=lambda x: x[2], reverse=True)
+for competitor in competitors:
+    print(competitor)
 
-new_ratings = ratings
-for i in range(N_matches):
-    k = kfactor(i, 300)
-    # if i > 2:
-    #     scores = scores / 2
-    #     scores[0] = 100
-    new_ratings = elo.rating_adjustment(new_ratings, scores, k=k, scale=1000)
-    riley.append(new_ratings[0])
-    dyami.append(new_ratings[1])
-    kirt.append(new_ratings[2])
-    sean.append(new_ratings[3])
-    dana.append(new_ratings[4])
+## Skill tracking plot
+shooters = ['L5336', 'A117077', 'TY99488', 'A128439', 'A142166', 'A104773']
+history = list()
+for shooter in shooters:
+    history.append(database.get_competitor_history(shooter, division))
 
-print(new_ratings)
-print('expected', elo.expected_scores(new_ratings))
-print('actual', elo.scores_normalized(scores))
+fig, ax = plt.subplots()
+for shooter in history:
+    t = list()
+    skill, performance, uncertainty = list(), list(), list()
+    shooter.sort(key=lambda x: x[5], reverse=True)
 
-plt.plot(x, riley, label='Riley')
-plt.plot(x, dyami, label='Dyami')
-plt.plot(x, kirt, label='Kirt')
-plt.plot(x, sean, label='Sean')
-plt.plot(x, dana, label='Dana')
-
-
-def expected(Ra, Rb, D=400):
-    return 1 / (1 + 10 ** ((Rb - Ra) / D))
-
-Rb = 1000
-x = np.linspace(100, 2000, 10000)
-y = expected(x, Rb, 400)
-
-# plt.plot(x, y)
-
+    for event in shooter:
+        t.append(datetime.datetime.fromtimestamp(event[5]))
+        skill.append(event[2])
+        uncertainty.append(event[3])
+        performance.append(event[4])
+    ax.plot(t, skill, label=shooter[0][0] + ' ' + shooter[0][1])
+fig.autofmt_xdate()
 plt.legend()
 plt.show()
 
+# skillA = 1580
+# skillB = 1500
+# uncertainty = 350
+# diff = 10
+#
+# t = time.time()
+# x = np.linspace(rating_min, rating_max, rating_max - rating_min + 1)
+# loss = mmr.loss_distribution(x, skillA, uncertainty)
+# win = mmr.win_distribution(x, skillB, uncertainty)
+#
+#
+# diff_win = mmr.logistic(diff)
+# win_draw = diff_win * win + (1 - diff_win) * loss
+#
+# print('Elapsed Time (s): %s' % (np.round(time.time() - t, 3)))
+# print('Win/Draw Ratio @', str(diff) + '%:', diff_win)
+# print('Performance:', x[np.argmin(np.abs(win_draw))])
+#
+# N = int(np.round((rating_max - rating_min + 1) / 25, 0))
+# x2 = np.linspace(rating_min, rating_max, N)
+# y = np.zeros(N)
+# for i in range(N):
+#     print(np.round(i / N * 100, 2), '%')
+#     loss = mmr.loss_distribution(x, x2[i], uncertainty)
+#     win = mmr.win_distribution(x, skillB, uncertainty)
+#     win_draw = diff_win * win + (1 - diff_win) * loss
+#     y[i] = x[np.argmin(np.abs(win_draw))] - x2[i]
+#
+# print('Break even:', x2[np.argmin(np.abs(y))])
+# plt.plot(x, loss, label='draw')
+# plt.plot(x, win, label='win')
+# plt.plot(x, win_draw, label='Combo')
+# plt.plot(x, cdf, label='cdf')
+# # plt.plot(x2, y)
+# x = np.linspace(1, 300, 1000)
+#
+#
+# def ratio(val, k):
+#     return (mmr.logistic(val - 1, scale=k) - 0.5) * 3 + 0.1
+#
+#
+# def numbers(val, slope, ymin, ymax):
+#     y = val * slope + ymin
+#     if y > ymax:
+#         return ymax
+#     else:
+#         return y
+#
+#
+# y = ratio(x, competitor_count_factor)
+# plt.plot(x, y)
+# plt.legend()
+# plt.show()
+
+print('')
+print('Target Destroyed')

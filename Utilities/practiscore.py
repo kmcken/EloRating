@@ -1,5 +1,6 @@
 from config import *
 from Utilities import filehandler
+from Application import rating
 from lxml import etree
 from io import StringIO
 
@@ -369,7 +370,7 @@ def json_stages(file):
                 'name': line[6],
                 'min_rounds': int(line[2]),
                 'max_points': int(line[3]),
-                'classifer': True if line[4].lower() == 'yes' else False,
+                'classifier': True if line[4].lower() == 'yes' else False,
                 'classifier_number': line[5],
                 'scoring': line[7]
             })
@@ -413,3 +414,140 @@ def json_scores(file):
             })
 
     return {'scores': score_list}
+
+
+def noclassifier(file):
+    """
+    Recalculates match results after removing the classifier.
+
+    Parameters
+    -------
+    file : str
+        file path to .json file
+
+    Returns
+    -------
+    match_scores : dict
+        json format
+    """
+    f = open(file)
+    data = json.load(f)
+    f.close()
+
+    competitors = data['overall']
+    divisions = list()
+    for competitor in competitors:
+        competitor['match_points'] = 0
+        if competitor['division'] not in divisions:
+            divisions.append(competitor['division'])
+    divisions = tuple(divisions)
+
+    stages = data['stages']
+    stages_not_classifier = list()
+    for stage in stages:
+        if stage['classifier'] is False:
+            stages_not_classifier.append(stage['number'])
+    stages_not_classifier = tuple(stages_not_classifier)
+
+    scores = data['scores']
+    for score in scores:
+        if score['stage'] in stages_not_classifier:
+            competitors[score["competitor"] - 1]['match_points'] += score['stage_points']
+
+    def hundo(results, div):
+        max_score = 0
+        for result in results:
+            if result['division'] == div and result['match_points'] > max_score:
+                max_score = result['match_points']
+        return max_score
+
+    hundos = list()
+    for division in divisions:
+        hundos.append(hundo(competitors, division))
+    hundos = tuple(hundos)
+
+    for competitor in competitors:
+        try:
+            competitor['percent'] = competitor['match_points'] / hundos[divisions.index(competitor['division'])] * 100
+        except ZeroDivisionError:
+            competitor['percent'] = 0
+
+    match_results = list()
+    for division in divisions:
+        div_competitors = list()
+        for competitor in competitors:
+            if competitor['division'] == division:
+                div_competitors.append(competitor)
+        div_competitors = sorted(div_competitors, key=lambda d: d['percent'], reverse=True)
+        for i in range(0, len(div_competitors)):
+            div_competitors[i]['place'] = i + 1
+            match_results.append(div_competitors[i])
+
+    new_stages = list()
+    for stage in stages:
+        if stage['number'] in stages_not_classifier:
+            new_stages.append(stage)
+    data['stages'] = new_stages
+    data['overall'] = match_results
+    return data
+
+
+def mmr_format(file, division='Carry Optics', match_type='USPSA', classifiers=ignore_classifier):
+    """
+    Converts Practiscore match results .json to match results for the specified division in a pandas Dataframe
+
+    Parameters
+    -------
+    file : str
+        file path to .json file
+    division : str
+        division name
+    match_type : str
+        Match type
+    classifiers : bool
+        Ignore classifier and recalculate scores
+
+    Returns
+    -------
+    competitors : list
+        competitor class with relevant match info
+    """
+    if classifiers is False:
+        f = open(file)
+        data = json.load(f)
+        f.close()
+    else:
+        data = noclassifier(file)
+
+    competitors = list()
+    for score in data['overall']:
+        if score['division'].lower() == division.lower():
+            competitor = rating.Competitor()
+            competitor.match_id = data['practiscore_id']
+            competitor.match_name = data['match_name']
+            competitor.match_date = data['date']
+            competitor.match_date_unix = data['unix']
+            competitor.match_type = match_type
+            competitor.club = data['club']
+            competitor.club_code = data['club_code']
+            competitor.first = score['firstname']
+            competitor.last = score['lastname']
+            competitor.division = division
+            competitor.score = score['match_points']
+            competitor.percent = score['percent']
+            competitor.place = score['place']
+            competitor.stage_count = len(data['stages'])
+            competitor.member = score['uspsa_num'].upper().replace(" ", "").replace("-", "")
+            if isnumberfake(competitor.member) is True:
+                competitor.member = None
+                competitor.noob = True
+            if competitor.percent > 0:
+                competitors.append(competitor)
+
+    return competitors
+
+
+def isnumberfake(member_number):
+    fake_num = ['', 'NA', 'N/A', 'NONE', '666', '69']
+    if member_number in fake_num:
+        return True
